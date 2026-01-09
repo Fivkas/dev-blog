@@ -84,3 +84,6 @@ Open [http://localhost:3000/blog](http://localhost:3000/blog) with your browser.
 - `/lib`: Shared utilities (Prisma client).
 - `/components`: Reusable UI components.
 - `middleware.ts`: Clerk authentication middleware for route protection.
+
+<img width="1434" height="676" alt="Screenshot 2026-01-09 at 4 30 07 PM" src="https://github.com/user-attachments/assets/ab7a6c8a-e162-4f09-8b07-484f6112c693" />
+<img width="1433" height="672" alt="Screenshot 2026-01-09 at 4 30 30 PM" src="https://github.com/user-attachments/assets/64cb87c8-74b8-4d7b-b656-dfee9a1ad6b8" />
