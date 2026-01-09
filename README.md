@@ -2,32 +2,34 @@
 
 A modern, secure, full-stack blog application built with **Next.js 16**, **Server Actions**, **PostgreSQL**, and **Clerk Authentication**.
 
-This project demonstrates a complete CRUD (Create, Read, Update, Delete) flow using the latest Next.js features, with protected routes and a polished UI.
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://dev-blog-fivkas.vercel.app/)
+
+## 🌟 Live Demo
+
+Check out the live application here: **[https://dev-blog-fivkas.vercel.app/](https://dev-blog-fivkas.vercel.app/)**
 
 ## ✨ Features
 
 - **Full Stack CRUD:** Create, read, edit, and delete posts directly from the UI.
-- **Secure Authentication:** Integrated with **Clerk** for user management.
-- **Protected Routes:** Middleware ensures only authenticated users can modify content.
-- **Server Actions:** Mutations handling directly on the server (no API endpoints).
+- **🔐 Secure Authentication:** Integrated with **Clerk** for user management.
+- **🛡️ Authorization & Ownership:** Users can only edit or delete **their own** posts.
+- **Server Actions:** Mutations handling directly on the server (no separate API endpoints).
 - **Database Integration:** PostgreSQL with Prisma ORM.
-- **Markdown Support:** Write posts in Markdown with rich formatting & syntax highlighting.
+- **Markdown Support:** Write posts in Markdown with rich formatting.
 - **Modern UI:** Responsive design with Tailwind CSS, CSS Grid, and beautiful cards.
-- **Local Development:** Docker Compose setup for the local database.
 
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
+- **Deployment:** Vercel
+- **Database:** PostgreSQL (Neon DB for Prod / Docker for Local)
 - **Auth:** Clerk
-- **Database:** PostgreSQL (Neon for Prod / Docker for Local)
 - **ORM:** Prisma
 - **Styling:** Tailwind CSS + @tailwindcss/typography
-- **Markdown:** react-markdown
 
-## 🚀 Getting Started
+## 🚀 Getting Started Locally
 
-Follow these steps to run the project locally.
+If you want to run this project on your machine:
 
 ### 1. Clone the repository
 ```bash
@@ -41,29 +43,25 @@ npm install
 ```
 
 ### 3. Setup Environment Variables
-
-Create a `.env` file in the root directory. You will need a **Clerk** account for the auth keys.
+Create a `.env` file in the root directory. You will need a **Clerk** account and a **PostgreSQL** database (Local via Docker or Cloud via Neon).
 
 ```env
-# Connect to the local Docker database
-DATABASE_URL="postgresql://myuser:mypassword@localhost:5432/devblog?schema=public"
+# Database Connection (Docker or Neon)
+DATABASE_URL="postgresql://user:password@localhost:5432/devblog?schema=public"
 
 # Clerk Authentication Keys (Get these from dashboard.clerk.com)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
 CLERK_SECRET_KEY=sk_test_...
 ```
 
-### 4. Start the Database (Docker)
-
+### 4. Start the Database (If using Docker)
 Ensure you have Docker Desktop installed and running.
 
 ```bash
-# Start the Postgres container
 docker-compose up -d
 ```
 
 ### 5. Run Migrations
-
 Push the database schema to your local Postgres instance.
 
 ```bash
@@ -77,13 +75,12 @@ npm run dev
 ```
 
 Open [http://localhost:3000/blog](http://localhost:3000/blog) with your browser.
-Try signing in to access the **Create**, **Edit**, and **Delete** features!
 
 ## 📂 Project Structure
 
 - `/app`: Next.js App Router pages and layouts.
-- `/app/actions`: Server Actions for database mutations.
-- `/prisma`: Database schema and migrations.
-- `/lib`: Shared utilities (Prisma client singleton).
+- `/app/actions`: Server Actions for database mutations (Create, Update, Delete).
+- `/prisma`: Database schema.
+- `/lib`: Shared utilities (Prisma client).
 - `/components`: Reusable UI components.
 - `middleware.ts`: Clerk authentication middleware for route protection.
