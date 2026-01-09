@@ -1,0 +1,21 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id        String   @id @default(uuid()) // Unique ID (e.g. "a1b2-c3d4...")
+  slug      String   @unique              // The URL (e.g. "my-first-post") - must be unique
+  title     String
+  content   String   // Article contents
+  createdAt DateTime @default(now())      // Creation date
+  published Boolean  @default(false)
+  updatedAt DateTime @updatedAt
+  userId    String
+}
